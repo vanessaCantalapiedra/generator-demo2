@@ -1,0 +1,15 @@
+{
+  "name": "generator-demo2",
+  "version": "1.0.0",
+  "description": "generador demo 2",
+  "author": "vanessa",
+  "license": "ISC",
+  "keywords": [
+    "yeoman-generator",
+    "demo-module"
+  ],
+  "dependencies": {
+    "yeoman-environment": "^3.1.0",
+    "yeoman-generator": "^3.1.1"
+     }
+}

@@ -1,0 +1,45 @@
+##############################################################################################
+# Incluir aqui las propiedades a utilizar por Spring Boot y los componentes de la aplicación #
+##############################################################################################
+# ===================================================================
+# Spring Boot configuration.
+# ===================================================================
+spring:
+  application:
+    name: <%= artifactId %>
+debug: false
+
+# ===================================================================
+# Application specific properties
+# ===================================================================
+logging:
+  level:
+    root: INFO
+
+# ===================================================================
+# Rest Client properties
+# ===================================================================
+
+<%_ if (monitoring) { _%>
+# ===================================================================
+# Application monitoring properties
+# ===================================================================
+management:
+  endpoints:
+    web:
+      base-path: /
+ #     path-mapping:
+ #       health: /health
+      exposure:
+        include: prometheus,info,health
+    enabled-by-default: false
+
+  endpoint:
+    prometheus:
+      enabled: true
+    health:
+      enabled: true
+    info:
+      enabled: true
+ <%_ } _%>
+

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.myarch.webflux</groupId>
+        <artifactId>base-project-webflux</artifactId>
+        <version><%= arqVersion %>-SNAPSHOT</version>
+    </parent>
+
+    <groupId><%= groupId %></groupId>
+    <artifactId><%= artifactId %></artifactId>
+    <version><%= artifactVersion %></version>
+    <packaging>pom</packaging>
+
+
+    <description>Proyecto backend para el servicio <%= projectName %></description>
+
+ <dependencies>
+<%_ if (swagger) { _%>
+        <dependency>
+            <groupId>com.myarch.webflux</groupId>
+            <artifactId>base-apiswg-spring-boot-starter</artifactId>
+        </dependency>
+<%_ } _%> 
+<%_ if (monitoring) { _%>
+	<!-- enable monitoring with prometheus -->
+  	<dependency>
+         <groupId>com.myarch.webflux</groupId>
+         	<artifactId>base-monitoring-spring-boot-starter</artifactId>
+     	</dependency>
+<%_ } _%>
+<%_ if (webclient) { _%>
+    <dependency>
+        <groupId>com.myarch.webflux</groupId>
+        <artifactId>base-rest-spring-boot-starter</artifactId>
+    </dependency>
+<%_ } _%>
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+  <plugins>
+
+
+
+  </plugins>
+    </build>
+
+    <distributionManagement>
+        <repository>
+            <id>nexus.releases</id>
+            <url>${release.url}</url>
+        </repository>
+        <snapshotRepository>
+            <uniqueVersion>false</uniqueVersion>
+            <id>nexus.snapshots</id>
+            <url>${snapshot.url}</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+    <modules>
+        <module>domain</module>
+        <module>infraestructure</module>
+    </modules>
+    
+</project>
